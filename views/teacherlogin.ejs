@@ -11,16 +11,19 @@
     <div class="log">
         <div class="logincard">
             <% if(session.teacher_id){%>
+                <form action="">
                 <h1><span style="color: rgb(50, 94, 176);"><%= session.school_name %></span></h1>
                 <h1>Welcome to your work space <br> Teacher <span style="color: rgb(97, 98, 181);"><%= session.user_name %></span>, Your class is <%= session.class_name %></h1>
-                <a href="teacher/logout"><button>Logout</button></a>
+                <a href="teacher/logout">
+                    <button style="padding: 12px;" class="btn">Logout</button></a>
+            </form>
                 <div class="col">
                    <table>
                     <tr>
                         <th>First name</th>
                         <th>Sur Name</th>
-                        <th>gender</th>
-                        <th>Action</th>
+                        <th>Gender</th>
+                        <th>TERMS</th>
                     </tr>
                     <% if (studentdata.length > 0){
                         studentdata.forEach(function(data){%>
@@ -29,12 +32,18 @@
                                 <td><%= data.sur_name %></td>
                                 <td><%= data.gender %></td>
                                 <td>
-                                    <a href="/first_term/<%= data.student_id %>"><button>1st term</button></a>
-                                    <a href="/second_term/<%= data.student_id %>"><button>2nd term</button></a>
-                                    <a href="/third_term/<%= data.student_id %>"><button>3rd term</button></a>
+                                    <a href="/first_term/<%= data.student_id %>">
+                                        <button style="padding: 5px;" id="submit">1st</button></a>
+                                    <a href="/second_term/<%= data.student_id %>">
+                                        <button style="padding: 5px;" id="submit">2nd</button></a>
+                                    <a href="/third_term/<%= data.student_id %>">
+                                        <button style="padding: 5px;" id="submit">3rd</button></a>
                                     <a href="/chart/<%= data.student_id %>">
-                                        <button style="padding: 3px; font-size: 12px; color: rgba(245, 222, 179, 0.601); background: rgba(18, 21, 22, 0.967);">
-                                        Student Activities</button>
+                                        <button style="padding: 3px; font-size: 12px; 
+                                        color: rgba(245, 222, 179, 0.601); 
+                                        background: rgba(18, 21, 22, 0.967);
+                                        padding: 4px">
+                                        Skill Area</button>
                                     </a>
                                 </td>
                             </tr>
@@ -47,7 +56,7 @@
                 <%}else{%>
                     <div class="col">
                         <form action="teacher/login" method="post">
-                            <input type="number" name="teacher_id" id="" placeholder="teacher_id">
+                            <input type="text" name="teacher_id" id="" placeholder="teacher_id">
                             <input type="text" name="phone_number" id="" placeholder="phone Number">
                             <input type="submit" value="login">
                         </form>

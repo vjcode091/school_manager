@@ -1,32 +1,35 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100%;
     font-size: 15px;
     background: black;
 }
 
-.container{
+.container {
     padding: 9%;
 }
-.title-bar{
+
+.title-bar {
     padding: 9px;
     background: black;
     font-size: 28px;
     color: wheat;
     text-align: center;
 }
-.content{
+
+.content {
     padding: 12px;
     display: flex;
     justify-content: space-between;
 }
-button{
-    box-shadow: 0 4px 20px  rgba(55, 56, 57, 0.916);
+
+button {
+    box-shadow: 0 4px 20px rgba(55, 56, 57, 0.916);
     width: 270px;
     font-size: 20px;
     font-weight: bolder;
@@ -38,29 +41,32 @@ button{
 
 
 /* PHONE SCREEN 300PX TO 575PX*/
-@media (max-width: 575.98px){
-    *{
+@media (max-width: 575.98px) {
+    * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
-    body{
+
+    body {
         background: black;
         width: 100%;
         font-size: 12px;
     }
-    
-    .container{
-        padding: 3px;
+
+    .container {
+        padding: 20% 2px;
         width: 100%;
     }
-    .content{
+
+    .content {
         padding: 20% 0 0 0;
         display: block;
 
     }
-    button{
-        box-shadow: 0 4px 20px  rgba(110, 153, 196, 0.916);
+
+    button {
+        box-shadow: 0 4px 20px rgba(110, 153, 196, 0.916);
         width: 100%;
         margin: 10px 0;
         font-size: 16px;
@@ -74,29 +80,32 @@ button{
 
 /* PHONE SCREEN 576PX TO 767PX*/
 @media (min-width: 576px) and (max-width: 767.98px) {
-    *{
+    * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
-    body{
+
+    body {
         background: rgb(0, 0, 0);
         width: 100%;
         font-size: 16px;
     }
-    
-    .container{
+
+    .container {
         padding: 5%;
         width: 100%;
-       text-align: center;
+        text-align: center;
     }
-    .content{
+
+    .content {
         padding: 22% 0 0 0;
         display: block;
 
     }
-    button{
-        box-shadow: 0 4px 20px  rgba(226, 246, 118, 0.916);
+
+    button {
+        box-shadow: 0 4px 20px rgba(226, 246, 118, 0.916);
         width: 95%;
         margin: 14px 0;
         font-size: 18px;
@@ -110,30 +119,33 @@ button{
 
 /* PHONE SCREEN 768PX TO 991.98PX*/
 @media (min-width: 768px) and (max-width: 991.98px) {
-    *{
+    * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
-    body{
+
+    body {
         background: rgb(0, 0, 0);
         width: 100%;
         font-size: 18px;
         text-align: center;
     }
-    
-    .container{
+
+    .container {
         padding: 5%;
         width: 95%;
-       text-align: center;
+        text-align: center;
     }
-    .content{
+
+    .content {
         padding: 22% 0 0 0;
         display: block;
 
     }
-    button{
-        box-shadow: 0 4px 20px  rgba(97, 187, 226, 0.916);
+
+    button {
+        box-shadow: 0 4px 20px rgba(97, 187, 226, 0.916);
         width: 89%;
         margin: 14px 0;
         font-size: 23px;

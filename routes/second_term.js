@@ -160,10 +160,15 @@ router.post('/edit/:second_term_id', function(req, res){
             throw err;
         }else{
             res.send(`
-                <div style="text-align: center;">
-                <h2>Score Updated</h2>
+                <div style="text-align: center; margin-top: 20%;">
+                <h2 style="font-size: 50px">Score Updated</h2>
+                <a href="/second_term/${student_id}">
+                <button style="padding: 20px; font-size: 40px; color: whitesmoke;
+                background: rgba(120, 120, 220, 0.6);">
+                Done
+                </button>
+                </a>
                 </div>
-                <a href="/second_term/${student_id}"><button>Done</button></a>
                 `);
         }
     })

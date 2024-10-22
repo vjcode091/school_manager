@@ -166,7 +166,7 @@ router.post("/edit/:result_id", function (req, res) {
                 <a href="/first_term/${student_id}">
                 <button style="padding: 20px; font-size: 40px; color: whitesmoke;
                 background: rgba(120, 120, 220, 0.6);">
-                mmDone
+                Done
                 </button>
                 </a>
                 </div>

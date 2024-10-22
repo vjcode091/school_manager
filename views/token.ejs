@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h2><%= title %></h2>
+    <form action="/token/generate-token" method="post">
+        <div class="col">
+            <input type="text" name="amount" placeholder="Token Amount Value" id="amount">
+        </div>
+        <div class="col">
+            <input type="number" name="student_id" placeholder="Your ID" id="student_id">
+        </div>
+        <div class="col">
+            <input type="submit" value="Purchase Card">
+        </div>
+    </form>
+</body>
+</html>

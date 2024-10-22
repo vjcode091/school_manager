@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/login.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="log">
+            <div class="logincard">
+                <% if(session.user_id){%>
+                    <div class="container">
+                    <a href="/login/logout"><button id="logout">Logout</button></a>
+                    <div class="col-image">
+                        <% image.forEach((image)=>{%>
+                        <% if(image.school_logo === null){%>
+                         --
+                        <%}else{%>
+                            <a href="/registerschool/editImage/<%= image.id %>"><img
+                            src="data:image/png;base64,<%=image.school_logo %>"
+                            alt="school_logo"></a>
+                        <%}%>
+                        
+                    </div>
+                    <h1>HI <%= session.school %></h1>
+                    <div class="con">
+                    <a href="/subject"><button class="con-btn">Subject
+                        <div class="col-small"><%= subjectCount %></div>
+                    </button></a>
+                    <a href="/class"><button class="con-btn">Classes
+                        <div class="col-small"><%= classCount %></div>
+                    </button></a>
+                    <a href="/teachers"><button class="con-btn">Teachers
+                        <div class="col-small"><%= teacherCount %></div>
+                    </button></a>
+                    <a href="/student"><button class="con-btn">Student
+                        <div class="col-small"><%= studentCount %></div>
+                    </button></a>
+                    <a href="/registerschool/editschool/<%= image.id %>">
+                        <button class="con-btn">Edit School</button></a>
+                    <a href="/academicsession/<%= image.id %>">
+                        <button class="con-btn">Edit Academic Session</button></a>
+                    </div>
+                    </div>
+                    <%})%>
+                <%}else{%>
+                    <div class="form-container">
+                    <div class="form-con">
+                        <form action="/login/login" method="post">
+                            <div class="con">
+                            <input type="text" name="first_name" id="first_name" placeholder="User Name"
+                            autocomplete="name">
+                            </div>
+                            <div class="con">
+                            <input type="password" name="password" id="password" placeholder="Password">
+                            </div>
+                            <div class="con">
+                            <input type="submit" value="login" id="login">
+                        </div>
+                        </form>
+                        <div class="addHeadTeacherDiv">
+                            <button><a href="/registerschool"><p>If your school is not registered you can
+                            Register your School Here</p>
+                            </a></button>
+                        </div>
+                    </div>
+                    </div>
+                <%}%>
+            </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/stylesheet/student_login.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="log">
+        <div class="logincard">
+            <% if(session.student_id){%>
+                <div class="printable">
+                <div class="col-all">
+                    <a href="/student_login/logout"><button>Logout</button></a>
+                    <div class="page">
+                    <div class="col-bar">
+                        <div class="logo-div">
+                        <% image.forEach((image)=>{%>
+                            <% if(image.school_logo === null){%>
+                             --
+                            <%}else{%>
+                                <img id="result-logo"
+                                src="data:image/png;base64,<%=image.school_logo %>"
+                                alt="school_logo">
+                            <%}%>
+                            <%})%>
+                        </div>
+                        <div class="school-name">
+                            <div class="school-info">
+                        <h1 id="schoolName"><%= session.school_name %></h1>
+                        <h3><%= session.school_address %></h3>
+                        <h3 id="schoolTerm">2nd Term Result</h3>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="tb-split">
+                        <div class="info-left">
+                            <table>
+                                <tr>
+                                    <td>Student ID:</td>
+                                    <td>SB.<%= session.student_id %></td>
+                                </tr>
+                                <tr>
+                                    <td>First Name:</td>
+                                    <td><%= session.student_name %></td>
+                                </tr>
+                                <tr>
+                                    <td>Sur Name:</td>
+                                    <td><%= session.sur_name %></td>
+                                </tr>
+                                <tr>
+                                    <td>Other Name:</td>
+                                    <td><%= session.other_name %></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="info-right">
+                            <table id="right-table">
+                                <tr>
+                                    <td>School Session</td>
+                                    <td><%= session.academic_session %></td>
+                                </tr>
+                                <tr>
+                                    <td>Student Class:</td>
+                                    <td><%= session.class_name %></td>
+                                </tr>
+                                <tr>
+                                    <td>Number of Pupil(s) in Class:</td>
+                                    <td><%= dataC %></td>
+                                </tr>
+                                <tr>
+                                    <td>Resumption Date:</td>
+                                    <td><%= session.resumption_date %></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tb-body">
+                        <table>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Test</th>
+                                <th>Exam</th>
+                                <th>Total</th>
+                                <th>Grade</th>
+                            </tr>
+                            <% if(sdata.length > 0){
+                                sdata.forEach(function(data){%>
+                                    <tr>
+                                        <td><%= data.subject_name %></td>
+                                        <td><%= data.ca_total %></td>
+                                        <td><%= data.exam %></td>
+                                        <td><%= data.grand_total %></td>
+                                        <td><%= data.grade %></td>
+                                    </tr>
+                                <%})
+                            }%>
+                        </table>
+                    </div>
+                        <div class="col-margin">
+                            <table>
+                                <tr>
+                                    <td class="tbhead">Total Score:</td>
+                                    <td><%= dataAdd %></td>
+                                </tr>
+                                <tr>
+                                    <td class="tbhead">Average:</td>
+                                    <td><%= avg %></td>
+                                </tr>
+                                <tr>
+                                    <td class="tbhead">Grade:</td>
+                                    <td><%= grade %></td>
+                                </tr>
+                            </table>
+                        </div>
+                            <!-- -------- BAR CHART DATASET------->
+                        <div class="col-dataset">
+                             <div>
+                                 <canvas id="myBarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="print-div">
+                        <button id="printBtn">PRINT RESULT</button>
+                    </div>
+                </div>
+                </div>
+                </div>
+                    <script src="/javascript/chart2.js"></script>
+                <%}else{%>
+                    <div class="form-container">
+                        <div class="content-form">
+                        <form action="/student_login" method="post">
+                            <input type="text" name="student_id" id="" placeholder="your ID">
+                            <input type="text" name="phone_number" id="" placeholder="phone_number">
+                            <input type="submit" value="login">
+                        </form>
+                        </div>
+                    </div>
+                <%}%>
+            </div>
+    </div>
+    
+</body>
+</html>

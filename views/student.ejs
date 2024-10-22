@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/table.css">
+    <link rel="stylesheet" href="/stylesheet/form.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+            <% if(action == 'list'){%>
+                <div class="addbtn">
+                    <a href="/student/add_student"><button id="submit">Add Student</button></a>
+                </div>
+            <table>
+                <tr>
+                <th>Student ID</th>
+                <th>First Name</th>
+                <th>Sur Name</th>
+                <th>Other Name</th>
+                <th>Gender</th>
+                <th>Class</th>
+                <th>Acion</th>
+                </tr>
+                <% if(showdata.length > 0){
+                    showdata.forEach(function(data){%>
+                        <tr>
+                            <td><%= data.student_id %></td>
+                            <td><%= data.student_name %></td>
+                            <td><%= data.sur_name %></td>
+                            <td><%= data.other_name %></td>
+                            <td><%= data.gender %></td>
+                            <td><%= data.class_name %></td>
+                            <td>
+                                <a href="/student/edit_student/<%= data.student_id %>">
+                                    <button class="btn">Edit</button></a>
+                                <a href="/student/delete_student/<%= data.student_id %>">
+                                    <button class="btn">Delete</button></a>
+                            </td>
+                        </tr>
+                    <%})
+                }%>
+            </table>
+        </div>
+        <%}else if(action == 'add'){%>
+            <div class="col">
+                <form action="/student/add_student" method="post">
+                    <div class="col">
+                        <label for="studentname">First Name</label>
+                        <input type="text" name="student_name" id="studentname" placeholder="student name">
+                    </div>
+                    <div class="col">
+                        <label for="surname">Sur Name</label>
+                        <input type="text" name="sur_name" id="surname" placeholder="Sur Name">
+                    </div>
+                    <div class="col">
+                        <label for="othername">Other Name</label>
+                        <input type="text" name="other_name" id="othername" placeholder="Other Name">
+                    </div>
+                    <div class="col">
+                        <label for="age">Age</label>
+                        <input type="number" name="age" id="age" placeholder="Age">
+                    </div>
+                    <div class="gendercard">
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="phoneNo">Phone Number</label>
+                        <input type="text" name="phone_number" id="phoneNo" placeholder="Parent Phone.No">
+                    </div>
+                    <div class="col">
+                        <label for="classid">Class ID</label>
+                        <select name="class_id" id="classid">
+                            <% if (classSelect.length > 0){
+                                classSelect.forEach(function(data){%>
+                                    <option value="<%= data.class_id %>">
+                                        <%= data.class_name %>
+                                    </option>
+                                <%})
+                            }%>
+                        </select>
+                    </div>
+                    <input type="number" style="visibility: hidden;" name="school_id" id="schoolid" value="<%= session.user_id %>">
+                    <input type="submit" id="register" value="register">
+                </form>
+            </div>
+        <%}else{%>
+            <div class="editdiv">
+                <form action="/student/edit_student/<%= studentedit.student_id %>" method="post">
+                    <div class="col">
+                        <h2>Editing <%= studentedit.student_name %> in <%= studentedit.class_name %></h2>
+                    </div>
+                    <div class="col">
+                        <label for="studentname">Student Name</label>
+                        <input type="text" name="student_name" id="studentname" value="<%= studentedit.student_name %>">
+                    </div>
+                    <div class="col">
+                        <label for="surname">Sur Name</label>
+                        <input type="text" name="sur_name" id="surname" value="<%= studentedit.sur_name %>">
+                    </div>
+                    <div class="col">
+                        <label for="othername">Sur Name</label>
+                        <input type="text" name="other_name" id="othername" value="<%= studentedit.other_name %>">
+                    </div>
+                    <div class="col">
+                        <label for="age">Age</label>
+                        <input type="number" name="age" id="age" value="<%= studentedit.age %>">
+                    </div>
+                    <div class="col">
+                        <label for="phoneNo">Phone Number</label>
+                        <input type="text" name="phone_number" id="phoneNo" value="<%= studentedit.phone_number %>">
+                    </div>
+                    <div class="col">
+                        <input type="number" style="visibility: hidden;" name="school_id" id="schoolid" value="<%= session.user_id %>">
+                    </div>
+                    <div class="col">
+                        <input type="submit" id="register" value="Edit">
+                    </div>
+                </form>
+            </div>
+        <%}%>
+    </div>
+</body>
+</html>

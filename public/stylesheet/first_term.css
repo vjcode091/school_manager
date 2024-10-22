@@ -1,0 +1,111 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    padding: 12px;
+    background: rgba(214, 220, 220, 0.94);
+}
+
+.con-score{
+    width: 30px;
+    height: 15px;
+    padding: 0;
+    margin: 0;
+    font: 5px;
+}
+
+.editresultbtn{
+    display: flex;
+    padding: 12px;
+    justify-content: space-between;
+}
+
+/* PHONE SCREEN 300PX TO 575PX*/
+@media (max-width: 575.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        padding: 0;
+        background: rgba(214, 220, 220, 0.94);
+    }
+    .tb{
+        width: 100%;
+    }
+    
+    .con-score{
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        margin: 0;
+        font: 5px;
+    }
+    
+    .editresultbtn{
+        padding: 1px;
+    }
+}
+
+/* PHONE SCREEN 576PX TO 767PX*/
+@media (min-width: 576px) and (max-width: 767.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        padding: 2px;
+        background: rgb(236, 237, 238);
+    }
+
+    .tb{
+        width: 100%;
+    }
+    
+    .con-score{
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        margin: 0;
+        font: 5px;
+    }
+    
+    .editresultbtn{
+        padding: 1px;
+    }
+}
+
+/* PHONE SCREEN 768PX TO 991.98PX*/
+@media (min-width: 768px) and (max-width: 991.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        padding: 2px;
+        background: rgb(236, 237, 238);
+    }
+
+    .tb{
+        width: 100%;
+    }
+    
+    .con-score{
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        margin: 0;
+        font: 5px;
+    }
+    
+    .editresultbtn{
+        padding: 1px;
+    }
+}

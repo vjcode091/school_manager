@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/chart.css">
+    <title><%= title %></title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3><%= title %> for <%= studentData.student_name %> <%= studentData.sur_name %></h3>
+        <div class="content-form">
+        <div class="col-form">
+            <form action="/chart/skill/<%= studentData.student_id %>" method="post">
+                <div class="col">
+                    <h2>Skills Area</h2>
+                    <label for="skill-id">Skill</label><br>
+                    <select name="skill_id" id="skill-id">
+                        <% if (skillData.length > 0){
+                            skillData.forEach(function(data2){%>
+                                <option value="<%= data2.id %>"><%= data2.skills_name %></option>
+                            <%})
+                        }%>
+                    </select>
+                    <div class="col">
+                        <label for="skillScore">Skill Score</label><br>
+                        <select name="score" id="skillScore">
+                            <option value="null">Score</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col" style="visibility: hidden;">
+                    <label for="student-id">Student ID</label>
+                    <input type="number" name="student_id" id="student-id" value="<%= studentData.student_id %>">
+                </div>
+                <div class="col">
+                    <input type="submit" value="SUBMIT" class="btn">
+                </div>
+            </form> 
+        </div>
+        </div>
+       
+        <div class="tableChart-card">
+            <div class="table-SkillChart">
+                <table>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Score</th>
+                        <th>Action</th>
+                    </tr>
+                    <% if (skillDataTable.length > 0){
+                        skillDataTable.forEach(function(skillData){%>
+                            <tr>
+                                <td><%= skillData.skills_name %></td>
+                                <td><%= skillData.score %></td>
+                                <td>
+                                    <a href="/chart/deleteskill/<%= skillData.id %>">
+                                        <button>Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        <%})
+                    }%>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

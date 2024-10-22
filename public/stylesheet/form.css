@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+form{
+    width: 50%;
+    padding: 12px;
+    font-size: 15px;
+    background: rgba(11, 18, 11, 0.822);
+    color: wheat;
+    border: 1px solid rgb(40, 117, 153);
+}
+
+form input{
+    width: 95%;
+    border: none;
+    border-radius: 13px;
+    padding: 12px;
+    margin: 5px;
+}
+#submit{
+    padding: 9px;
+    color: wheat;
+    background: rgb(16, 12, 12);
+    border: none;
+    cursor: pointer;
+}
+.btn{
+    padding: 10px;
+    background: rgb(87, 149, 215);
+    color: white;
+    cursor: pointer;
+}
+select{
+    padding: 10px;
+    background: rgb(79, 103, 145);
+    color: whitesmoke;
+}
+
+@media (max-width: 575.98px){
+    form{
+        width: 99%;
+        padding: 8px;
+        font-size: 14px;
+        background: rgb(16, 18, 16);
+        color: wheat;
+        border: 1px solid rgb(24, 91, 121);
+        margin: 5px 0;
+    }
+    
+    form input{
+        width: 100%;
+        border: none;
+        border-radius: 13px;
+        padding: 6px;
+        margin: 3px;
+    }
+    #submit{
+        margin: 3px;
+        padding: 3px;
+        font-weight: bold;
+        color: wheat;
+        background: rgb(16, 12, 12);
+        border: none;
+        border-left: 3px solid;
+        border-right: 3px solid;
+    }
+    .btn{
+        padding: 3px;
+        font-size: 9px;
+        background: rgb(87, 149, 215);
+        color: white;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px){
+    form{
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background: rgb(16, 18, 16);
+        color: wheat;
+        border: 1px solid rgb(24, 91, 121);
+        margin: 6px 0;
+    }
+    
+    form input{
+        width: 100%;
+        border: none;
+        border-radius: 13px;
+        padding: 6px;
+        margin: 3px;
+    }
+    #submit{
+        width: 120px;
+        margin: 5px;
+        padding: 6px;
+        color: wheat;
+    background: rgb(16, 12, 12);
+    border: none;
+    border-left: 3px solid;
+    border-right: 3px solid;
+    }
+    .btn{
+        padding: 5px;
+        background: rgb(87, 149, 215);
+        color: white;
+    }
+}
+
+/* PHONE SCREEN 576PX TO 767PX*/
+@media (min-width: 768px) and (max-width: 991.98px){
+    form{
+        width: 100%;
+        padding: 18px;
+        font-size: 23px;
+        background: rgb(16, 18, 16);
+        color: wheat;
+        border: 1px solid rgb(24, 91, 121);
+        margin: 6px 0;
+    }
+    
+    form input{
+        width: 100%;
+        border: none;
+        border-radius: 13px;
+        padding: 10px;
+        margin: 4px;
+    }
+    #submit{
+        width: 120px;
+        margin: 6px;
+        padding: 10px;
+        color: wheat;
+    background: rgb(16, 12, 12);
+    border: none;
+    border-left: 3px solid;
+    border-right: 3px solid;
+    }
+    .btn{
+        padding: 6px;
+        background: rgb(87, 149, 215);
+        color: white;
+    }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/table.css">
+    <link rel="stylesheet" href="/stylesheet/form.css">
+    <link rel="stylesheet" href="/stylesheet/first_term.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+    <% if (action == 'list'){%>
+        <div class="btnback">
+            <a href="/teacher"><button id="submit">Go Back and Refresh</button></a>
+        </div>
+        <div class="editresultbtn">
+            <div class="tb">
+                <h1><%= session.school %></h1>
+            <table>
+            <tr>
+                <th>STUDENT ID</th>
+                <th>FIRST NAME</th>
+                <th>SUR NAME</th>
+                <th>CLASS</th>
+            </tr>
+            <% if (tableinfo.length > 0){
+                tableinfo.forEach(function(data2){%>
+                    <tr>
+                        <td><%= data2.student_id %></td>
+                        <td><%= data2.student_name %></td>
+                        <td><%= data2.sur_name %></td>
+                        <td><%= data2.class_name %></td>
+                    </tr>
+                <%})
+            }%>
+            </table>
+            </div>
+            <div class="tb">
+            <table>
+                <tr>
+                    <th>subject ID</th>
+                    <th>subject</th>
+                </tr>
+                <% if (subjectinfo.length > 0){
+                    subjectinfo.forEach(function(data3){%>
+                        <tr>
+                            <td><%= data3.subject_id %></td>
+                            <td><%= data3.subject_name %></td>
+                        </tr>
+                   <%})
+                }%>
+            </table>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>CA 1</th>
+                <th>CA 2</th>
+                <th>CA 3</th>
+                <th>CA 4</th>
+                <th>CA Total</th>
+                <th>Exam</th>
+                <th>Grand Total</th>
+                <th>Grade</th>
+                <th>Teacher Remark</th>
+                <th>Action</th>
+            </tr>
+            <% if(studentresult.length > 0){
+                studentresult.forEach(function(data){%>
+                    <tr>
+                        <td><%= data.subject_name %></td>
+                        <td><%= data.ca_1 %></td>
+                        <td><%= data.ca_2 %></td>
+                        <td><%= data.ca_3 %></td>
+                        <td><%= data.ca_4 %></td>
+                        <td><%= data.ca_total %></td>
+                        <td><%= data.exam %></td>
+                        <td><%= data.grand_total %></td>
+                        <td><%= data.grade %></td>
+                        <td><%= data.teacher_remark %></td>
+                        <td>
+                            <a href="/first_term/edit/<%= data.result_id %>">
+                                <button class="btn">Edit</button>
+                            </a>
+                            <a href="/first_term/delete/<%= data.result_id %>">
+                                <button class="btn">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                <%})
+            }%>
+        </table>
+        <!----- THIS CODE IS TO INSERT SCORE INTO RESULT ---->
+        <div class="editResult">
+            <form action="/first_term/edit_result" method="post">
+                <div class="col">
+                    <h3>Register Subject for this student</h3>
+                </div>
+                <div class="col">
+                    <input type="number" name="subject_id" id="Subject" placeholder="Enter Subject ID">
+                </div>
+                <div class="col">
+                    <input type="number" name="student_id" id="Student" placeholder="Enter student ID">
+                </div>
+                <div class="con-score" style="visibility: hidden;">
+                    <input type="number" name="ca_1" id="ca-1" placeholder="Ca 1">
+                    <input type="number" name="ca_2" id="ca-2" placeholder="Ca 2">
+                    <input type="number" name="ca_3" id="ca-3" placeholder="Ca 3">
+                    <input type="number" name="ca_4" id="ca-3" placeholder="Ca 4">
+                    <input type="number" name="exam" id="Exam" placeholder="Exam">
+                </div>
+                <div class="col">
+                    <input type="submit" id="btn" value="Add">
+                </div>
+            </form>
+        </div>
+    <%}else if(action == 'edit'){%>
+        <div class="editresultdiv">
+            <form action="/first_term/edit/<%= editdata.result_id %>" method="post">
+                <div class="col">
+                    <h4>
+                    you want to Edit <span style="color: blue;"><%= editdata.subject_name %></span> 
+                    score for <span style="color: blue;"><%= editdata.student_name %> <%= editdata.sur_name %></span>
+                    </h4>
+                </div>
+                <br><br>
+                <div class="col">
+                    <input type="number" style="visibility: hidden;" name="subject_id" id="Subject" value="<%= editdata.subject_id %>">
+                </div>
+                <div class="col" style="visibility: hidden;">
+                    <label for="student_id">Student ID</label>
+                    <input type="number" name="student_id" id="Student" value="<%= editdata.student_id %>">
+                </div>
+                <div class="col">
+                    <label for="ca-1">CA 1</label>
+                    <input type="number" name="ca_1" id="ca-1" value="<%= editdata.ca_1 %>"><br>
+                    <label for="ca-2">CA 2</label>
+                    <input type="number" name="ca_2" id="ca-2" value="<%= editdata.ca_2 %>"><br>
+                    <label for="ca-3">CA 3</label>
+                    <input type="number" name="ca_3" id="ca-3" value="<%= editdata.ca_3 %>"><br>
+                    <label for="ca-4">CA 4</label>
+                    <input type="number" name="ca_4" id="ca-4" value="<%= editdata.ca_4 %>"><br>
+                    <label for="Exam">Exam</label>
+                    <input type="number" name="exam" id="Exam" value="<%= editdata.exam %>"><br>
+                    <div class="col">
+                        <input type="submit" id="btn" value="Done">
+                    </div>
+                </div>
+            </form>
+        </div>
+    <%}else{%>
+    <%}%>
+    </div>
+</body>
+</html>

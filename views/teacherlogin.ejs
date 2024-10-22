@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/form.css">
+    <link rel="stylesheet" href="/stylesheet/table.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="log">
+        <div class="logincard">
+            <% if(session.teacher_id){%>
+                <h1><span style="color: rgb(50, 94, 176);"><%= session.school_name %></span></h1>
+                <h1>Welcome to your work space <br> Teacher <span style="color: rgb(97, 98, 181);"><%= session.user_name %></span>, Your class is <%= session.class_name %></h1>
+                <a href="teacher/logout"><button>Logout</button></a>
+                <div class="col">
+                   <table>
+                    <tr>
+                        <th>First name</th>
+                        <th>Sur Name</th>
+                        <th>gender</th>
+                        <th>Action</th>
+                    </tr>
+                    <% if (studentdata.length > 0){
+                        studentdata.forEach(function(data){%>
+                            <tr>
+                                <td><%= data.student_name %></td>
+                                <td><%= data.sur_name %></td>
+                                <td><%= data.gender %></td>
+                                <td>
+                                    <a href="/first_term/<%= data.student_id %>"><button>1st term</button></a>
+                                    <a href="/second_term/<%= data.student_id %>"><button>2nd term</button></a>
+                                    <a href="/third_term/<%= data.student_id %>"><button>3rd term</button></a>
+                                    <a href="/chart/<%= data.student_id %>">
+                                        <button style="padding: 3px; font-size: 12px; color: rgba(245, 222, 179, 0.601); background: rgba(18, 21, 22, 0.967);">
+                                        Student Activities</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        <%})
+                    }%>
+                   </table>
+                   <div class="col">
+                   </div>
+                </div>
+                <%}else{%>
+                    <div class="col">
+                        <form action="teacher/login" method="post">
+                            <input type="number" name="teacher_id" id="" placeholder="teacher_id">
+                            <input type="text" name="phone_number" id="" placeholder="phone Number">
+                            <input type="submit" value="login">
+                        </form>
+                    </div>
+                <%}%>
+</body>
+</html>

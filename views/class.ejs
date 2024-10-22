@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/table.css">
+    <link rel="stylesheet" href="/stylesheet/form.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="content">
+        <% if(action == 'add'){%>
+            <h2><%= title %></h2>
+        <div class="addcard">
+            <form action="/class/add_class" method="post">
+                <input type="text" name="class_name" id="className" placeholder="class name">
+                <input type="number" name="school_id" id="schoolid" style="visibility: hidden;" value="<%= session.user_id %>">
+                <input type="submit" value="add" id="submit">
+            </form>
+        </div>
+        <%}else if(action == 'list'){%>
+            <div class="tablecard">
+                <div class="addcard">
+                    <a href="/class/add_class"><button id="submit">Add class</button></a>
+                </div>
+                <table>
+                    <tr>
+                        <th>class ID</th>
+                        <th>Class Name</th>
+                        <th>School ID</th>
+                        <th>Action</th>
+                    </tr>
+                    <% if(showdata.length > 0){
+                        showdata.forEach(function(data){%>
+                            <tr>
+                                <td><%= data.class_id %></td>
+                                <td><%= data.class_name %></td>
+                                <td><%= data.school_id %></td>
+                                <td>
+                                    <a href="/class/class_info/<%= data.class_id %>">
+                                        <button class="btn">info</button></a>
+                                    <a href="/class/editclass/<%= data.class_id %>"><button class="btn">Edit</button></a>
+                                </td>
+                            </tr>
+                       <%})
+                    }%>
+                </table>
+            </div>
+        <%}else if(action == 'class'){%>
+            <div class="teachertable">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Teacher's Name</th>
+                    </tr>
+                    <% if(teachersdata.length > 0){
+                        teachersdata.forEach(function(data2){%>
+                            <tr>
+                                <td><%= data2.teacher_id %></td>
+                                <td><%= data2.teacher_name %></td>
+                            </tr>
+                       <%})
+                    }%>
+                </table>
+            </div>
+            <div class="tablecard">
+                <table>
+                    <tr>
+                        <th>Student id</th>
+                        <th>First Name</th>
+                        <th>Sur Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Phone No</th>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <% if(seedata.length > 0){
+                        seedata.forEach(function(data){%>
+                            <tr>
+                                <td><%= data.student_id %></td>
+                                <td><%= data.student_name %></td>
+                                <td><%= data.sur_name %></td>
+                                <td><%= data.gender %></td>
+                                <td><%= data.age %></td>
+                                <td><%= data.phone_number %></td>
+                            </tr>
+                     <%})
+                    }%>
+                </table>
+            </div>
+        <%}else{%>
+            <div class="addcard">
+                <form action="/class/editclass/<%= editclass.class_id %>" method="post">
+                    <input type="text" name="class_name" id="className" value="<%= editclass.class_name %>">
+                    <input type="number" name="school_id" id="schoolid" style="visibility: hidden;" value="<%= session.user_id %>">
+                    <input type="submit" value="add" id="submit">
+                </form>
+            </div>
+        <%}%>
+</body>
+</html>

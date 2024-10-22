@@ -1,0 +1,629 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.form-container{
+    background: rgba(248, 248, 252, 0.874);
+    display: flex;
+    justify-content: center;
+}
+
+.content-form{
+    padding: 47px 18px;
+    margin: 8%;
+    height: 300px;
+    width: 470px;
+    background: transparent;
+    text-align: center;
+    border-radius: 22px;
+    border: 1px solid rgba(53, 88, 146, 0.866);
+    box-shadow: 2px 4px 34px rgb(44, 53, 82);
+}
+
+input[type="text"]{
+    padding: 14px;
+    font-size: 18px;
+    background: rgba(165, 196, 220, 0.893);
+    width: 97%;
+    border-radius: 15px;
+    border: none;
+    margin: 10px 0;
+}
+
+input[type="submit"]{
+    width: 190px;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid rgba(69, 115, 165, 0.929);
+    border-radius: 15px;
+    background-color: transparent;
+    color: rgb(12, 2, 13);
+    font-weight: bold;
+    box-shadow: 2px 2px 20px rgba(129, 157, 201, 0.762);
+    cursor: pointer;
+}
+/* FOR THE RESULT */
+.printable{
+    background: rgba(36, 62, 98, 0.838);
+    display: flex;
+    justify-content: center;
+}
+.col-all{
+    background: rgba(202, 209, 210, 0.908);
+    width: 70%;
+}
+button{
+    padding: 14px;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.page{
+    background: white;
+}
+
+.col-bar{
+    background: rgba(140, 210, 237, 0.989);
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.logo-div{
+    width: 25%;
+}
+#result-logo{
+    width: 100%;
+}
+
+.school-name{
+    width: 70%;
+    padding-top: 20px;
+}
+.school-info{
+    width: 84%;
+    text-align: center;
+}
+table{
+    width: 80%;
+}
+.tb-split{
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 7px;
+}
+th,td{
+    outline: 1px solid black;
+    padding: 2px 5px 2px 2px;
+}
+.info-left, .info-right{
+    width: 45%;
+}
+
+.info-left table, .info-right table{
+    width: 100%;
+    font-size: 16px;
+} 
+.tb-body{
+    padding: 12px;
+    font-size: 15px;
+}
+.col-margin{
+    margin-top: 12px;
+    padding: 12px;
+}
+.col-margin table{
+    width: 35%;
+}
+
+.tbhead{
+    font-weight: bold;
+}
+.col-dataset{
+    width: 300px;
+}
+
+.print-div{
+    text-align: right;
+}
+
+@media print{
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .printable{
+        background: rgba(36, 62, 98, 0.838);
+        display: flex;
+        justify-content: center;
+    }
+    .col-all{
+        background: rgba(202, 209, 210, 0.908);
+        width: 70%;
+    }
+    button{
+        display: none;
+    }
+    
+    .page{
+        background: white;
+    }
+    
+    .col-bar{
+        background: rgba(140, 210, 237, 0.989);
+        display: flex;
+        border-bottom: 1px solid black;
+    }
+    .logo-div{
+        width: 25%;
+    }
+    #result-logo{
+        width: 100%;
+    }
+    
+    .school-name{
+        width: 70%;
+        padding-top: 20px;
+    }
+    .school-info{
+        width: 84%;
+        text-align: center;
+    }
+    table{
+        width: 100%;
+    }
+    .tb-split{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 7px;
+    }
+    th,td{
+        outline: 1px solid black;
+        padding: 2px 5px 2px 2px;
+        font-size: 14px;
+    }
+    .info-left, .info-right{
+        width: 45%;
+    }
+    
+    .info-left table, .info-right table{
+        width: 100%;
+        font-size: 16px;
+        padding: 7px;
+    } 
+    .tb-body{
+        padding: 12px;
+        font-size: 15px;
+    }
+    .col-margin{
+        margin-top: 12px;
+        padding: 12px;
+    }
+    .col-margin table{
+        width: 35%;
+    }
+    
+    .tbhead{
+        font-weight: bold;
+    }
+    .col-dataset{
+        width: 40%;
+    }
+    
+    .print-div{
+        text-align: right;
+    }
+}    
+
+/* PHONE SCREEN 300PX TO 575PX*/
+@media (max-width: 575.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    .form-container{
+        width: 100%;
+        background: rgb(231, 231, 233);
+        height: 679px;
+    }
+    
+    .content-form{
+        padding: 12px 5px;
+        margin: 8% 0;
+        width: 99.8%;
+        background: transparent;
+        text-align: center;
+        border-radius: 12px;
+        border: 1px solid rgba(53, 88, 146, 0.866);
+        box-shadow: 2px 4px 34px rgb(44, 53, 82);
+    }
+    
+    input[type="text"]{
+        padding: 14px;
+        font-size: 16px;
+        background: rgba(165, 196, 220, 0.893);
+        width: 98%;
+        border-radius: 15px;
+        margin: 8px 0;
+    }
+    
+    input[type="submit"]{
+        width: 150px;
+        padding: 10px;
+        font-size: 17px;
+        border:1px solid rgb(71, 97, 157);
+        background: transparent;
+        border-radius: 12px;
+        color: rgb(13, 10, 5);
+        font-weight: bold;
+        box-shadow: 2px 2px 12px rgba(129, 163, 207, 0.762);
+    }
+    /* FOR THE RESULT */
+.printable{
+    padding: 0;
+    background: rgba(36, 62, 98, 0.838);
+    width: 100%;
+}
+.col-all{
+    background: rgba(202, 209, 210, 0.908);
+    width: 100%;
+}
+button{
+    padding: 9px;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 7px;
+    cursor: pointer;
+}
+
+.page{
+    background: white;
+    width: 100%;
+}
+
+.col-bar{
+    background: rgba(140, 210, 237, 0.989);
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.logo-div{
+    width: 26%;
+    height: auto;
+}
+#result-logo{
+    width: 100%;
+    height: 100%;
+}
+
+.school-name{
+    width: 99%;
+    font-size: 14;
+    padding: 0;
+}
+.school-info{
+    width: 88%;
+    text-align: center;
+    font-size: 12;
+}
+table{
+    width: 99%;
+}
+.tb-split{
+    display: flex;
+    justify-content: space-between;
+    padding: 1px;
+}
+th,td{
+    outline: 1px solid black;
+    padding: 1px 3px 1px 1px;
+}
+.info-left, .info-right{
+    width: 48%;
+    font-size: 8px;
+}
+
+.info-left table, .info-right table{
+    width: 100%;
+} 
+.tb-body{
+    padding: 12px;
+    font-size: 14px;
+}
+.col-margin{
+    margin-top: 4px;
+}
+.col-margin table{
+    width: 50%;
+}
+
+.tbhead{
+    font-weight: bold;
+}
+.col-dataset{
+    width: 90%;
+}
+
+.print-div{
+    text-align: right;
+}
+}
+
+/* PHONE SCREEN 576PX TO 767PX*/
+@media (min-width: 576px) and (max-width: 767.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    .form-container{
+        width: 100%;
+        background: rgb(231, 231, 233);
+        height: 700px;
+    }
+    
+    .content-form{
+        padding: 12px 5px;
+        margin: 8% 0;
+        width: 99.8%;
+        background: transparent;
+        text-align: center;
+        border-radius: 12px;
+        border: 1px solid rgba(53, 88, 146, 0.866);
+        box-shadow: 2px 4px 34px rgb(44, 53, 82);
+    }
+    
+    input[type="text"]{
+        padding: 14px;
+        font-size: 16px;
+        background: rgba(144, 191, 226, 0.893);
+        width: 98%;
+        border-radius: 15px;
+        margin: 8px 0;
+    }
+    
+    input[type="submit"]{
+        width: 150px;
+        padding: 10px;
+        font-size: 17px;
+        border:1px solid rgb(71, 97, 157);
+        background: transparent;
+        border-radius: 12px;
+        color: rgba(45, 49, 52, 0.844);
+        font-weight: bold;
+        box-shadow: 2px 2px 12px rgba(129, 163, 207, 0.762);
+    }
+    /* FOR THE RESULT */
+.printable{
+    padding: 0;
+    background: rgba(36, 62, 98, 0.838);
+    width: 100%;
+}
+.col-all{
+    background: rgba(202, 209, 210, 0.908);
+    width: 100%;
+}
+button{
+    padding: 9px;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 7px;
+    cursor: pointer;
+}
+
+.page{
+    background: white;
+    width: 100%;
+}
+
+.col-bar{
+    background: rgba(140, 210, 237, 0.989);
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.logo-div{
+    width: 26%;
+    height: auto;
+}
+#result-logo{
+    width: 100%;
+    height: 100%;
+}
+
+.school-name{
+    width: 99.9%;
+    font-size: 14;
+    padding: 0;
+}
+.school-info{
+    width: 88%;
+    text-align: center;
+    font-size: 12;
+}
+table{
+    width: 98%;
+}
+.tb-split{
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 2%;
+}
+th,td{
+    outline: 1px solid black;
+    padding: 1px 3px 1px 1px;
+}
+.info-left, .info-right{
+    width: 45%;
+}
+
+.info-left table, .info-right table{
+    width: 100%;
+    font-size: 10px;
+} 
+.tb-body{
+    padding: 12px;
+    font-size: 13px;
+}
+.col-margin{
+    margin-top: 4px;
+    padding: 10px;
+    display: flex;
+}
+.col-margin table{
+    width: 34%;
+}
+
+.tbhead{
+    font-weight: bold;
+}
+.col-dataset{
+    width: 70%;
+}
+
+.print-div{
+    text-align: right;
+}
+}
+
+/* PHONE SCREEN 768PX TO 991.98PX*/
+@media (min-width: 768px) and (max-width: 991.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    .form-container{
+        width: 100%;
+        background: rgb(231, 231, 233);
+        height: 679px;
+    }
+    
+    .content-form{
+        padding: 12px 5px;
+        margin: 8% 0;
+        width: 99.8%;
+        background: transparent;
+        text-align: center;
+        border-radius: 15px;
+        border: 1px solid rgba(53, 88, 146, 0.866);
+        box-shadow: 2px 4px 34px rgb(44, 53, 82);
+    }
+    
+    input[type="text"]{
+        padding: 14px;
+        font-size: 16px;
+        background: rgba(144, 191, 226, 0.893);
+        width: 98%;
+        border-radius: 15px;
+        margin: 8px 0;
+    }
+    
+    input[type="submit"]{
+        width: 150px;
+        padding: 10px;
+        font-size: 17px;
+        border:1px solid rgb(71, 97, 157);
+        background: transparent;
+        border-radius: 12px;
+        color: rgba(45, 49, 52, 0.844);
+        font-weight: bold;
+    }
+    /* FOR THE RESULT */
+.printable{
+    background: rgba(36, 62, 98, 0.838);
+}
+.col-all{
+    background: rgba(202, 209, 210, 0.908);
+    width: 100%;
+}
+button{
+    padding: 14px;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.page{
+    background: white;
+}
+
+.col-bar{
+    background: rgba(140, 210, 237, 0.989);
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.logo-div{
+    width: 23%;
+}
+#result-logo{
+    width: 100%;
+    height: 100%;
+}
+
+.school-name{
+    width: 70%;
+    padding-top: 20px;
+}
+.school-info{
+    width: 84%;
+    text-align: center;
+}
+table{
+    width: 90%;
+}
+.tb-split{
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 7px;
+}
+th,td{
+    outline: 1px solid black;
+    padding: 2px 5px 2px 2px;
+}
+.info-left, .info-right{
+    width: 45%;
+}
+
+.info-left table, .info-right table{
+    width: 100%;
+} 
+.tb-body{
+    padding: 12px;
+    font-size: 14px;
+}
+.col-margin{
+    margin-top: 12px;
+    padding: 12px;
+}
+.col-margin table{
+    width: 30%;
+}
+
+.tbhead{
+    font-weight: bold;
+}
+.col-dataset{
+    width: 300px;
+}
+
+.print-div{
+    text-align: right;
+}
+
+}

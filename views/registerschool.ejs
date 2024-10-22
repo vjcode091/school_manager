@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/form.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="content">
+        <% if (action == 'reg'){%>
+            <div class="container">
+                <form action="/registerschool/reg" method="post" enctype="multipart/form-data">
+                    <div class="col">
+                        <label for="firstName">First Name:</label><br>
+                        <input type="text" name="first_name" id="firstName">
+                    </div>
+                    <div class="col">
+                        <label for="lastName">Last Name:</label><br>
+                        <input type="text" name="last_name" id="lastName">
+                    </div>
+                    <div class="col">
+                        <label for="email">Email Address:</label><br>
+                        <input type="text" name="email" id="email">
+                    </div>
+                    <div class="col">
+                        <label for="schoolName">School Name:</label><br>
+                        <input type="text" name="school_name" id="schoolName">
+                    </div>
+                    <div class="col">
+                        <label for="schoolName">School Address:</label><br>
+                        <input type="text" name="school_address" id="schoolAddress">
+                    </div>
+                    <div class="col">
+                        <label for="password">Password:</label><br>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div class="col">
+                        <label for="image">School Logo:</label><br>
+                        <input type="file" name="image" id="image">
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Register" id="register">
+                    </div>
+                </form>
+            </div>
+        <%}else if(action == 'edit'){%>
+            <div class="container">
+                <form action="/registerschool/editschool/<%= htData.id %>" method="post" enctype="multipart/form-data">
+                    <div class="col">
+                        <label for="firstName">First Name:</label><br>
+                        <input type="text" name="first_name" id="firstName" value="<%= htData.first_name %>">
+                    </div>
+                    <div class="col">
+                        <label for="lastName">Last Name:</label><br>
+                        <input type="text" name="last_name" id="lastName" value="<%= htData.last_name %>">
+                    </div>
+                    <div class="col">
+                        <label for="email">Email Address:</label><br>
+                        <input type="text" name="email" id="email" value="<%= htData.email %>">
+                    </div>
+                    <div class="col">
+                        <label for="schoolName">School Name:</label><br>
+                        <input type="text" name="school_name" id="schoolName" value="<%= htData.school_name %>">
+                    </div>
+                    <div class="col">
+                        <label for="schoolName">School Address:</label><br>
+                        <input type="text" name="school_address" id="schoolAddress" value="<%= htData.school_address %>">
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Edit" id="Edit">
+                    </div>
+                </form>
+            </div>
+        <%}else{%>
+            <div class="col">
+                <form action="/registerschool/editImage/<%= editImage.id %>" method="post" enctype="multipart/form-data">
+                    <div class="col">
+                        <%= session.user_name %>
+                        <label for="school-logo">Edit School Logo:</label><br>
+                        <input type="file" name="image" id="school-logo">
+                    </div>
+                    <div class="col">
+                        <input type="submit" id="submit" value="Edit School Logo">
+                    </div>
+                </form>
+            </div>
+            <%}%>
+    </div>
+    
+</body>
+</html>

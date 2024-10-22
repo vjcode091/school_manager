@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/table.css">
+    <link rel="stylesheet" href="/stylesheet/form.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <% if(action == 'list'){%>
+        <div class="addcard">
+            <form action="/subject/add_subject" method="post">
+                <div class="subjectaddDiv">
+                    <label for="subjectName">Add New Subject</label><br>
+                    <input type="text" name="subject_name" id="subjectName" placeholder="Enter Subject">
+                </div>
+                <input type="text" name="school_id" id="schoolid" style="display: none;" value="<%= session.user_id %>">
+                <input type="submit" value="Add" id="submit">
+            </form>
+            <table>
+                <tr>
+                <th>Subject ID</th>
+                <th>Subject</th>
+                <th>School</th>
+                <th>Action</th>
+                </tr>
+                <% if(subjectdata.length > 0){
+                    subjectdata.forEach(function(data){%>
+                        <tr>
+                            <td><%= data.subject_id %></td>
+                            <td><%= data.subject_name %></td>
+                            <td><%= data.school_name %></td>
+                            <td>
+                                <a href="/subject/edit_subject/<%= data.subject_id %>">
+                                   <button class="btn">Edit</button></a>
+                                <a href="/subject/delete_subject/<%= data.subject_id %>">
+                                    <button class="btn">Delete</button></a>
+                            </td>
+                        </tr>
+                    <%})
+                }%>
+            </table>
+        </div>
+   <% }else{%>
+    <div class="col">
+        <form action="/subject/edit_subject/<%= editsubject.subject_id %>" method="post">
+            <input type="text" name="subject_name" id="subjectName" value="<%= editsubject.subject_name %>">
+            <input type="text" style="display: none;" name="school_id" id="school_id" value="<%= editsubject.school_id %>">
+            <input type="submit" value="Edit" id="submit">
+        </form>
+    </div>
+   <% }%>
+    
+    
+</body>
+</html>

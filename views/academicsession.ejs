@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/form.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <div class="col">
+            <h1><%= session.school %></h1>
+            <div class="col">
+                <h3>current academic Session <%= academic.academic_session %></h3>
+            </div>
+        </div>
+        <div class="col">
+            <form action="/academicsession/update/<%= academic.id %>" method="post">
+                <div class="col">
+                    <label for="session">Edit Academic Session</label>
+                    <input type="text" name="session" id="session"
+                    placeholder="Edit Academic Session">
+                </div><br>
+                <div class="col">
+                    <label for="resumption">Enter Resumption Data</label>
+                    <input type="date" name="resumption" id="resumption">
+                    <hr style="color: wheat;">
+                    <p>Note: The resumption date can be Entered later 
+                        but make sure your ender it before the Printing of result
+                    </p>
+                    <hr style="color: wheat;">
+                </div>
+                <div class="col">
+                    <input type="submit" value="Edit" id="edit">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

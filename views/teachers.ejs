@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/table.css">
+    <link rel="stylesheet" href="/stylesheet/form.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="content">
+        <% if(action == 'list'){%>
+            <h2><%= title %></h2>
+    <div class="addcard">
+        <form action="/teachers/add_teacher" method="post">
+            <h3>Add Teacher Here</h3>
+            <hr><hr>
+            <div class="col">
+                <label for="teacherName">Teacher's Name</label>
+                <input type="text" name="teacher_name" id="teacherName" placeholder="teacher name">
+            </div>
+           <div class="col">
+            <label for="classId">Class ID</label>
+            <select name="class_id" id="classId">
+            <% if (classSelect.length > 0){
+                classSelect.forEach(function(data2){%>
+                    <option value="<%= data2.class_id %>">
+                        <%= data2.class_name %>
+                    </option>
+                <%})
+            }%>
+            </select>
+           </div>
+            <div class="col">
+                <label for="phonenumber">Phone Number</label>
+                <input type="text" name="phone_number" id="phonenumber" placeholder="Phone Number">
+            </div>
+            <div class="col">
+                <input type="text" style="visibility: hidden;" name="school_id" id="schoolid" value="<%= session.user_id %>">
+            </div>
+            <div class="col">
+                <input type="submit" value="add" id="submit">
+            </div>
+        </form>
+        <div class="tablecard">
+            <table>
+            <tr>
+                <th>Teacher ID</th>
+                <th>Teacher Name</th>
+                <th>Class</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+            </tr>
+            <% if(teacherdata.length > 0){
+                teacherdata.forEach(function(data){%>
+                    <tr>
+                        <td><%= data.teacher_id %></td>
+                        <td><%= data.teacher_name %></td>
+                        <td><%= data.class_name %></td>
+                        <td><%= data.phone_number %></td>
+                        <td>
+                            <a href="/teachers/edit_teacher/<%= data.teacher_id %>">
+                                <button class="btn">Edit</button></a>
+                            <a href="/teachers/delete_teacher/<%= data.teacher_id %>">
+                                <button class="btn">Delete</button></a>
+                        </td>
+                    </tr>
+              <%})
+            }%>
+            </table>
+        </div>
+    </div>
+        <%}else{%>
+            <div class="teachereditform">
+                <form action="/teachers/edit_teacher/<%= teacheredit.teacher_id %>" method="post">
+                    <div class="col">
+                        <label for="teacher_name">Teacher's Name</label>
+                        <input type="text" name="teacher_name" id="teacherName" value="<%= teacheredit.teacher_name %>">
+                    </div>
+                    <div class="col">
+                        <label for="classId">Class ID</label>
+                        <select name="class_id" id="classId">
+                        <% if (classSelect.length > 0){
+                            classSelect.forEach(function(data2){%>
+                                <option value="<%= data2.class_id %>">
+                                    <%= data2.class_name %>
+                                </option>
+                            <%})
+                        }%>
+                        </select>
+                       </div>
+                    <div class="col">
+                        <label for="phonenumber">Phone Number</label>
+                        <input type="text" name="phone_number" id="phonenumber" value="<%= teacheredit.phone_number %>">
+                    </div>
+                    <div class="col">
+                        <input type="text" style="visibility: hidden;" name="school_id" id="schoolid" value="<%= teacheredit.school_id %>">
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Edit" id="submit">
+                    </div>
+                   
+                </form>
+            </div>
+        <%}%>
+    </div>
+    
+</body>
+</html>

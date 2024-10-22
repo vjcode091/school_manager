@@ -1,0 +1,156 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 0 10%;
+    background: rgba(19, 50, 82, 0.97);
+}
+
+.container{
+    width: 100%;
+    background: whitesmoke;
+    padding: 22px;
+    height: 100vh;
+}
+h1{
+    padding: 19px;
+    font-size: 60px;
+    color: rgba(12, 37, 61, 0.97);
+}
+
+button{
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 12px;
+    font-weight: bolder;
+    background: rgba(15, 46, 78, 0.97);
+    color: whitesmoke;
+    box-shadow: 2px 2px 20px rgba(119, 180, 241, 0.97);
+    margin: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* PHONE SCREEN 300PX TO 575PX*/
+@media (max-width: 575.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        padding: 0;
+        background: rgba(241, 243, 246, 0.97);
+    }
+    
+    .container{
+        width: 100%;
+        background: whitesmoke;
+        padding: 2px;
+        text-align: center;
+    }
+    h1{
+        margin: 45px 0 10px 0;
+        padding: 3px;
+        font-size: 30px;
+        color: rgba(12, 37, 61, 0.97);
+    }
+    
+    button{
+        padding: 7px;
+        font-size: 17px;
+        border-radius: 11px;
+        font-weight: bolder;
+        background: rgba(15, 46, 78, 0.97);
+        color: wheat;
+        box-shadow: 2px 2px 20px rgba(119, 180, 241, 0.97);
+        margin: 20px;
+        border: none;
+    }
+}
+
+/* PHONE SCREEN 576PX TO 767PX*/
+@media (min-width: 576px) and (max-width: 767.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        padding: 0;
+        background: rgba(244, 247, 250, 0.97);
+    }
+    
+    .container{
+        width: 100%;
+        background: whitesmoke;
+        padding: 2px;
+        text-align: center;
+    }
+    h1{
+        margin: 45px 0 15px 0;
+        padding: 3px;
+        font-size: 50px;
+        color: rgba(12, 37, 61, 0.97);
+    }
+    
+    button{
+        padding: 30px;
+        font-size: 25px;
+        border-radius: 11px;
+        font-weight: bolder;
+        background: rgba(15, 46, 78, 0.97);
+        color: wheat;
+        box-shadow: 2px 2px 20px rgba(119, 180, 241, 0.97);
+        margin: 20px;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+/* PHONE SCREEN 768PX TO 991.98PX*/
+@media (min-width: 768px) and (max-width: 991.98px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        padding: 0;
+        background: rgba(247, 249, 251, 0.97);
+    }
+    
+    .container{
+        width: 100%;
+        background: whitesmoke;
+        padding: 2px;
+        text-align: center;
+    }
+    h1{
+        margin: 70px 0 20px 0;
+        padding: 9px;
+        font-size: 60px;
+        color: rgba(12, 37, 61, 0.97);
+    }
+    
+    button{
+        padding: 30px;
+        font-size: 25px;
+        border-radius: 11px;
+        font-weight: bolder;
+        background: rgba(15, 46, 78, 0.97);
+        color: wheat;
+        box-shadow: 2px 2px 20px rgba(76, 124, 172, 0.97);
+        margin: 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+}
+

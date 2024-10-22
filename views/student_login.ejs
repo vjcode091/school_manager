@@ -39,7 +39,7 @@
                             <div class="info-left">
                                 <table>
                                     <tr>
-                                        <td>Student ID:</td>
+                                        <td>Pupil ID:</td>
                                         <td>SB.<%= session.student_id %></td>
                                     </tr>
                                     <tr>
@@ -63,7 +63,7 @@
                                         <td><%= session.academic_session %></td>
                                     </tr>
                                     <tr>
-                                        <td>Student Class:</td>
+                                        <td>Pupil Class:</td>
                                         <td><%= session.class_name %></td>
                                     </tr>
                                     <tr>
@@ -85,6 +85,7 @@
                                     <th>Exam</th>
                                     <th>Total</th>
                                     <th>Grade</th>
+                                    <th>Teacher's Remark</th>
                                 </tr>
                                 <% if(sdata.length > 0){
                                     sdata.forEach(function(data){%>
@@ -94,6 +95,7 @@
                                             <td><%= data.exam %></td>
                                             <td><%= data.grand_total %></td>
                                             <td><%= data.grade %></td>
+                                            <td><%= data.teacher_remark %></td>
                                         </tr>
                                     <%})
                                 }%>

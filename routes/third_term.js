@@ -17,10 +17,8 @@ router.get('/:student_id', function(req, res){
     JOIN head_teacher_talbe ON student_table.school_id = head_teacher_talbe.id
     WHERE student_table.student_id = '${id}'
     `;
-    let query3 = `SELECT * FROM subject_table 
-    JOIN head_teacher_talbe ON subject_table.school_id = head_teacher_talbe.id
-    WHERE subject_table.school_id = '${schoolid}'
-    `;
+    let selectSql = `SELECT * FROM subject_table WHERE school_id = '${schoolid}'`;
+    let studentIDSql = `SELECT * FROM student_table WHERE school_id = '${schoolid}'`;
     database.query(query, function(err, data){
         if(err){
             throw err;
@@ -29,25 +27,26 @@ router.get('/:student_id', function(req, res){
                 if (err){
                     throw err;
                 }else{
-                    database.query(query3, function(err, data3){
-                        if (err){
-                            throw err;
-                        }else{
+                    database.query(selectSql, function(err, selectData){
+                        if (err) throw err;
+                        database.query(studentIDSql, function(err, studentData){
+                            if (err) throw err;
                             res.render('third_term', {
-                                title: 'Third Term Result',
-                                action: 'list',
-                                studentresult: data,
-                                tableinfo: data2,
-                                subjectinfo: data3,
-                                session: req.session
+                            title: 'Third Term Result',
+                            action: 'list',
+                            studentresult: data,
+                            tableinfo: data2,
+                            session: req.session,
+                            selectData: selectData,
+                            studentData: studentData[0]
+                        })
+                        })
                             })
                         }
                     })
                 }
             })
-        }
-    })
-})
+        })
 
 router.post('/edit_result', function(req, res, next){
     let subjectId = req.body.subject_id
@@ -86,8 +85,13 @@ router.post('/edit_result', function(req, res, next){
         }else{
             res.send(`<div style="text-align: center;">
                 <p>You added new result score to Student with this ID 
-                <span style="color: blue; font-size: 19px;"> ${studentId}</span></p>
-                 <a href="/third_term/${studentId}"><button>Done</button></a>
+                <span style="color: blue; font-size: 24px;"> ${studentId}</span></p>
+                 <a href="/third_term/${studentId}">
+                 <button style="padding: 12px; 
+                 font-size: 34px; font-weight: bold;
+                 background: rgba(120, 200, 254, 0.7)">
+                 Done
+                 </button></a>
                  </div>`)
         }
     })

@@ -11,12 +11,12 @@
     <div class="log">
         <div class="logincard">
             <% if(session.teacher_id){%>
-                <form action="">
+                <div class="logout-card">
                 <h1><span style="color: rgb(50, 94, 176);"><%= session.school_name %></span></h1>
                 <h1>Welcome to your work space <br> Teacher <span style="color: rgb(97, 98, 181);"><%= session.user_name %></span>, Your class is <%= session.class_name %></h1>
                 <a href="teacher/logout">
                     <button style="padding: 12px;" class="btn">Logout</button></a>
-            </form>
+            </div>
                 <div class="col">
                    <table>
                     <tr>

@@ -1,12 +1,12 @@
-const express = require("express");
-const database = require("../database.js");
-const session = require("express-session");
+const express = require('express')
+const database = require('../database.js')
+const session = require('express-session')
 
-const router = express.Router();
+const router = express.Router()
 
-router.get("/:student_id", function (req, res) {
-    let schoolid = req.session.school_id;
-    let id = req.params.student_id;
+router.get('/:student_id', function(req, res){
+    let schoolid = req.session.school_id
+    let id = req.params.student_id
     let query = `SELECT * FROM result_table
     JOIN student_table ON result_table.student_id = student_table.student_id
     JOIN subject_table ON result_table.subject_id = subject_table.subject_id
@@ -17,46 +17,46 @@ router.get("/:student_id", function (req, res) {
     JOIN head_teacher_talbe ON student_table.school_id = head_teacher_talbe.id
     WHERE student_table.student_id = '${id}'
     `;
-    let query3 = `SELECT * FROM subject_table 
-    JOIN head_teacher_talbe ON subject_table.school_id = head_teacher_talbe.id
-    WHERE subject_table.school_id = '${schoolid}'
-    `;
-    database.query(query, function (err, data) {
-        if (err) {
+    let selectSql = `SELECT * FROM subject_table WHERE school_id = '${schoolid}'`;
+    let studentIDSql = `SELECT * FROM student_table WHERE school_id = '${schoolid}'`;
+    database.query(query, function(err, data){
+        if(err){
             throw err;
-        } else {
-            database.query(query2, function (err, data2) {
-                if (err) {
+        }else{
+            database.query(query2, function(err, data2){
+                if (err){
                     throw err;
-                } else {
-                    database.query(query3, function (err, data3) {
-                        if (err) {
-                            throw err;
-                        } else {
-                            res.render("first_term", {
-                                title: "First Term Result",
-                                action: "list",
-                                studentresult: data,
-                                tableinfo: data2,
-                                subjectinfo: data3,
-                                session: req.session,
-                            });
+                }else{
+                    database.query(selectSql, function(err, selectData){
+                        if (err) throw err;
+                        database.query(studentIDSql, function(err, studentData){
+                            if (err) throw err;
+                            res.render('first_term', {
+                            title: 'First Term Result',
+                            action: 'list',
+                            studentresult: data,
+                            tableinfo: data2,
+                            session: req.session,
+                            selectData: selectData,
+                            studentData: studentData[0]
+                        })
+                        })
+                            })
                         }
-                    });
+                    })
                 }
-            });
+            })
         }
-    });
-});
+    )
 
-router.post("/edit_result", function (req, res, next) {
-    let subjectId = req.body.subject_id;
-    let studentId = req.body.student_id;
-    let ca1 = req.body.ca_1;
-    let ca2 = req.body.ca_2;
-    let ca3 = req.body.ca_3;
-    let ca4 = req.body.ca_4;
-    let exam = req.body.exam;
+router.post('/edit_result', function(req, res, next){
+    let subjectId = req.body.subject_id
+    let studentId = req.body.student_id
+    let ca1 = req.body.ca_1
+    let ca2 = req.body.ca_2
+    let ca3 = req.body.ca_3
+    let ca4 = req.body.ca_4
+    let exam = req.body.exam
 
     let query = `INSERT INTO result_table
     (subject_id, student_id, ca_1, ca_2, ca_3, ca_4,ca_total, 
@@ -81,50 +81,55 @@ router.post("/edit_result", function (req, res, next) {
     else 'Poor' END)
     `;
 
-    database.query(query, function (err, data) {
-        if (err) {
+    database.query(query, function(err, data){
+        if(err){
             throw err;
-        } else {
+        }else{
             res.send(`<div style="text-align: center;">
                 <p>You added new result score to Student with this ID 
-                <span style="color: blue; font-size: 19px;"> ${studentId}</span></p>
-                 <a href="/first_term/${studentId}"><button>Done</button></a>
-                 </div>`);
+                <span style="color: blue; font-size: 24px;"> ${studentId}</span></p>
+                 <a href="/first_term/${studentId}">
+                 <button style="padding: 12px; 
+                 font-size: 34px; font-weight: bold;
+                 background: rgba(120, 200, 254, 0.7)">
+                 Done
+                 </button></a>
+                 </div>`)
         }
-    });
-});
+    })
+})
 
-router.get("/edit/:result_id", function (req, res) {
-    let id = req.params.result_id;
+router.get('/edit/:result_id', function(req, res){
+    let id = req.params.result_id
     let query = `SELECT * FROM result_table
     JOIN student_table ON result_table.student_id = student_table.student_id
     JOIN subject_table ON result_table.subject_id = subject_table.subject_id
     WHERE result_table.result_id = ${id}
     `;
 
-    database.query(query, function (err, data) {
-        if (err) {
+    database.query(query, function(err, data){
+        if (err){
             throw err;
-        } else {
-            res.render("first_term", {
-                title: "First term result edit",
-                action: "edit",
+        }else{
+            res.render('first_term', {
+                title: 'First term result edit',
+                action: 'edit',
                 editdata: data[0],
-                session: req.session,
-            });
+                session: req.session
+            })
         }
-    });
-});
+    })
+})
 
-router.post("/edit/:result_id", function (req, res) {
-    let id = req.params.result_id;
-    let subject_id = req.body.subject_id;
-    let student_id = req.body.student_id;
-    let ca1 = req.body.ca_1;
-    let ca2 = req.body.ca_2;
-    let ca3 = req.body.ca_3;
-    let ca4 = req.body.ca_4;
-    let exam = req.body.exam;
+router.post('/edit/:result_id', function(req, res){
+    let id = req.params.result_id
+    let subject_id = req.body.subject_id
+    let student_id = req.body.student_id
+    let ca1 = req.body.ca_1
+    let ca2 = req.body.ca_2
+    let ca3 = req.body.ca_3
+    let ca4 = req.body.ca_4
+    let exam = req.body.exam
 
     let query = `UPDATE result_table
     SET subject_id = '${subject_id}',
@@ -156,10 +161,10 @@ router.post("/edit/:result_id", function (req, res) {
     WHERE result_table.result_id = '${id}'
     AND result_table.student_id = '${student_id}'
     `;
-    database.query(query, function (err, data) {
-        if (err) {
+    database.query(query, function(err, data){
+        if (err){
             throw err;
-        } else {
+        }else{
             res.send(`
                 <div style="text-align: center; margin-top: 20%;">
                 <h2 style="font-size: 50px">Score Updated</h2>
@@ -172,19 +177,20 @@ router.post("/edit/:result_id", function (req, res) {
                 </div>
                 `);
         }
-    });
-});
+    })
+})
 
-router.get("/delete/:result_id", function (req, res, next) {
-    let id = req.params.result_id;
+router.get('/delete/:result_id', function(req, res, next){
+    let id = req.params.result_id
     let query = `DELETE FROM result_table WHERE result_id = '${id}'`;
-    database.query(query, function (err, data) {
-        if (err) {
+    database.query(query, function(err, data){
+        if (err){
             throw err;
-        } else {
-            res.redirect(`/teacher`);
+        }else{
+            res.redirect(`/teacher`)
         }
-    });
-});
+    })
+})
+
 
 module.exports = router;
